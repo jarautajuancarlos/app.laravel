@@ -9,44 +9,45 @@
     <hr>
 
     <!-- creamos formulario con laravel collective -->
-
-    {!! Form::open(['url' => 'foo/bar']) !!}
+    <!-- creamos enlace para ejecutar la funcion store en este formulario -->
+    {!! Form::open([ 'action' => 'App\Http\Controllers\AdminUsersController@store']) !!}
       <table>
         <tr>
-          <td>{!! Form::label('email', 'E-Mail Address') !!}</td>
-          <td>{!! Form::text('username') !!}</td>
+          <td>{!! Form::label('name', 'Nombre: ') !!}</td>
+          <td>{!! Form::text('name') !!}</td>
         </tr>
         <tr>
-          <td>{!! Form::label('email', 'E-Mail Address') !!}</td>
-          <td>{!! Form::text('username') !!}</td>
+          <td>{!! Form::label('password', 'Password: ') !!}</td>
+          <td>{!! Form::text('password') !!}</td>
         </tr>
         <tr>
-          <td>{!! Form::label('email', 'E-Mail Address') !!}</td>
-          <td>{!! Form::text('username') !!}</td>
+          <td>{!! Form::label('email', 'E-Mail: ') !!}</td>
+          <td>{!! Form::text('email') !!}</td>
         </tr>
         <tr>
-          <td>{!! Form::label('email', 'E-Mail Address') !!}</td>
-          <td>{!! Form::text('username') !!}</td>
+          <td>{!! Form::label('email', 'Verificar E-Mail: ') !!}</td>
+          <td>{!! Form::text('email_verified_at') !!}</td>
         </tr>
         <tr>
-          <td>{!! Form::label('email', 'E-Mail Address') !!}</td>
-          <td>{!! Form::text('username') !!}</td>
+          <td>{!! Form::label('role_id', 'Role: ') !!}</td>
+          <td>{!! Form::text('role_id') !!}</td>
         </tr>
+        <!-- añadimos campo foto -->
         <tr>
-          <td>{!! Form::label('email', 'E-Mail Address') !!}</td>
-          <td>{!! Form::text('username') !!}</td>
+          <td>{!! Form::label('foto', 'Foto: ') !!}</td>
+          <!-- añadimos boton buscar -->
+          <td>{!! Form::file('ruta_foto') !!}</td>
         </tr>
+        <!-- añadimos botones para enviar -->
         <tr>
-          <td>{!! Form::label('email', 'E-Mail Address') !!}</td>
-          <td>{!! Form::text('username') !!}</td>
-        </tr>
+          <td>{!! Form::submit('Insertar Usuario') !!}</td>
 
-
-
-
-
+          <!-- añadimos boton reset -->
+          <td>{!! Form::reset('Reset') !!}</td>
+        </tr>
 
       </table>
     {!! Form::close() !!}
+
   </body>
 </html>

@@ -20,6 +20,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        // añadimos los campos que faltan de la tabla
+        'role_id',
+        'ruta_foto',
     ];
 
     /**
@@ -45,4 +48,9 @@ class User extends Authenticatable
     public function role(){
       return $this->belongsTo('App\Models\Role');
     }
+    // añadimos funcion para foto
+    public function foto(){
+      return $this->belongsTo('App\Models\Foto');
+    }
+
 }

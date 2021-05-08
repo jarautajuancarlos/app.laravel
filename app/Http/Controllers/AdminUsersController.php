@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 // vinculamos clase users
 use App\Models\User;
+
 class AdminUsersController extends Controller
 {
     /**
@@ -41,7 +42,10 @@ class AdminUsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // añadimos usuario con el formulario create
+        User::create($request->all());
+        // redirigimos a la vista index
+        return redirect('/admin/users');
     }
 
     /**
