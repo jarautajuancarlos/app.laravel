@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+// añadimos ruta para AdminUsersController
+use App\Http\Controllers\AdminUsersController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +26,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+// añadimos ruta para admin
+Route::resource('/admin/users', AdminUsersController::class);
