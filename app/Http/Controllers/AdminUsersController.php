@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 // vinculamos clase users
 use App\Models\User;
 
+// vinculamos modelo Foto
+use App\Models\Foto;
+
 class AdminUsersController extends Controller
 {
     /**
@@ -42,10 +45,25 @@ class AdminUsersController extends Controller
      */
     public function store(Request $request)
     {
+      // enlazamos imagen de formulario
+      $entrada=$request->all();
+      if($archivo=$request->file('ruta_foto')){
+        $nombre=$archivo->getClientOriginalName();
+        // movemos archivo a carpeta
+        $archivo->move('images', $nombre);
+        // almacenamos la imagen en la tabla fotos
+        $foto=Foto::create(['ruta_foto'=>$nombre]);
+        // asignamos id a la foto
+        $entrada['ruta_foto']=$foto->id;
+      }else{
+        // si no hay imagen
+        User::create($entrada);
+      }
+
         // añadimos usuario con el formulario create
-        User::create($request->all());
+        // User::create($request->all());
         // redirigimos a la vista index
-        return redirect('/admin/users');
+        // return redirect('/admin/users');
     }
 
     /**

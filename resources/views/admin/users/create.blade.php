@@ -10,7 +10,8 @@
 
     <!-- creamos formulario con laravel collective -->
     <!-- creamos enlace para ejecutar la funcion store en este formulario -->
-    {!! Form::open([ 'action' => 'App\Http\Controllers\AdminUsersController@store']) !!}
+    
+    {!! Form::open([ 'action' => 'App\Http\Controllers\AdminUsersController@store', 'files'=>true]) !!}
       <table>
         <tr>
           <td>{!! Form::label('name', 'Nombre: ') !!}</td>
