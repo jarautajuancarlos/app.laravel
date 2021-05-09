@@ -22,7 +22,7 @@ class User extends Authenticatable
         'password',
         // añadimos los campos que faltan de la tabla
         'role_id',
-        'ruta_foto',
+        'foto_id',
     ];
 
     /**

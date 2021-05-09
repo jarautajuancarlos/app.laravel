@@ -47,23 +47,27 @@ class AdminUsersController extends Controller
     {
       // enlazamos imagen de formulario
       $entrada=$request->all();
-      if($archivo=$request->file('ruta_foto')){
+      if($archivo=$request->file('foto_id')){
         $nombre=$archivo->getClientOriginalName();
         // movemos archivo a carpeta
         $archivo->move('images', $nombre);
         // almacenamos la imagen en la tabla fotos
         $foto=Foto::create(['ruta_foto'=>$nombre]);
         // asignamos id a la foto
-        $entrada['ruta_foto']=$foto->id;
+        $entrada['foto_id']=$foto->id;
       }else{
         // si no hay imagen
-        User::create($entrada);
+        // User::create($entrada);
       }
+
+      // encriptamos contraseña
+      $entrada['password']=bcrypt($request->password);
+      User::create($entrada);
 
         // añadimos usuario con el formulario create
         // User::create($request->all());
         // redirigimos a la vista index
-        // return redirect('/admin/users');
+        return redirect('/admin/users');
     }
 
     /**
@@ -85,7 +89,9 @@ class AdminUsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        //mostrar informacion usuario para editar
+        $user=User::findOrFail($id);
+        return view ('admin.users.edit', compact('user'));
     }
 
     /**
@@ -97,7 +103,25 @@ class AdminUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // añadimos funcion para cambiar datos registro
+        $user=User::findOrFail($id);
+        // añadimos
+        $entrada=$request->all();
+        if($archivo=$request->file('foto_id')){
+          $nombre=$archivo->getClientOriginalName();
+          // movemos archivo a carpeta
+          $archivo->move('images', $nombre);
+          // almacenamos la imagen en la tabla fotos
+          $foto=Foto::create(['ruta_foto'=>$nombre]);
+          // asignamos id a la foto
+          $entrada['foto_id']=$foto->id;
+        }else{
+          // si no hay imagen
+          // User::create($entrada);
+        }
+        $user->update($entrada);
+        //redirigimos el metodo update
+        return redirect('/admin/users');
     }
 
     /**

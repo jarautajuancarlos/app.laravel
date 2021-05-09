@@ -10,7 +10,7 @@
 
     <!-- creamos formulario con laravel collective -->
     <!-- creamos enlace para ejecutar la funcion store en este formulario -->
-    
+
     {!! Form::open([ 'action' => 'App\Http\Controllers\AdminUsersController@store', 'files'=>true]) !!}
       <table>
         <tr>
@@ -37,7 +37,7 @@
         <tr>
           <td>{!! Form::label('foto', 'Foto: ') !!}</td>
           <!-- añadimos boton buscar -->
-          <td>{!! Form::file('ruta_foto') !!}</td>
+          <td>{!! Form::file('foto_id') !!}</td>
         </tr>
         <!-- añadimos botones para enviar -->
         <tr>
