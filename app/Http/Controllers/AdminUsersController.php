@@ -10,6 +10,9 @@ use App\Models\User;
 // vinculamos modelo Foto
 use App\Models\Foto;
 
+// importar mensajes flash
+use Illuminate\Support\Facades\Session;
+
 class AdminUsersController extends Controller
 {
     /**
@@ -137,6 +140,8 @@ class AdminUsersController extends Controller
         $user=User::findOrFail($id);
         $user->delete();
 
+        // mensaje flash
+        Session::flash('usuario_borrado', 'Usuario Eliminado');
         // redirigimos a index
         return redirect('/admin/users');
     }

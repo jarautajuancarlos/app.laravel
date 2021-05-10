@@ -6,9 +6,14 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   </head>
   <body>
-    <h1>ADMIN</h1>
+    <!-- elegir donde queremos mostrar el mensaje flash  -->
+    @if (Session::has('usuario_borrado'))
+      <p class="bg-danger">{{session('usuario_borrado')}}</p> 
+    @endif
+
+    <h1 style="text-align:center; margin:40px;">ADMIN</h1>
     <hr>
-    <table>
+    <table class="table">
       <tr>
         <th scope="col">Id</th>
         <th scope="col">Rol Id</th>
