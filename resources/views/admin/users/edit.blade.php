@@ -56,9 +56,13 @@
 
       </table>
     {!! Form::close() !!}
-
-
 </form>
 
+<!-- añadimos formulario para destroy -->
+<form method="post" action="{{route('users.destroy', $user)}}" enctype="multipart/form-data">
+        @csrf
+        @method('DELETE')
+        <input type="submit" name="" value="Eliminar Usuario ">
+</form>
   </body>
 </html>

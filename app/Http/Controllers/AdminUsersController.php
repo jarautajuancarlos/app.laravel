@@ -132,6 +132,26 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //añadimos función para destroy
+        // eliminamos el registro en bbdd
+        $user=User::findOrFail($id);
+        $user->delete();
+
+        // redirigimos a index
+        return redirect('/admin/users');
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
